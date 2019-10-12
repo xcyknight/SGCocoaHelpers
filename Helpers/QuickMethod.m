@@ -20,7 +20,7 @@ NSString* const kCallNotSupportOnThisDevice = @"该设备不支持电话功能";
 NSString* const kSmsNotSupportOnThisDevice = @"该设备不支持短信功能";
 
 @interface QuickMethod ()
-@property (nonatomic, strong) UIWebView *callWebView;
+//@property (nonatomic, strong) UIWebView *callWebView;
 @end
 
 @implementation QuickMethod
@@ -162,15 +162,15 @@ void on_main_thread(void (^b)())
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%ld&mt=8", appid]]];
 }
 
-- (void)makeCallWithWebView:(NSString *)aPhoneNumber
-{
-    if (IS_IPHONE) {
-        NSString* numberAfterClear = [QuickMethod cleanPhoneNumber:aPhoneNumber];
-        UIWebView *phoneWebView = [[UIWebView alloc] init];
-        [phoneWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", numberAfterClear]]]];
-        self.callWebView = phoneWebView;
-    } else {
-        [QuickMethod alert:kCallNotSupportOnThisDevice];
-    }
-}
+//- (void)makeCallWithWebView:(NSString *)aPhoneNumber
+//{
+//    if (IS_IPHONE) {
+//        NSString* numberAfterClear = [QuickMethod cleanPhoneNumber:aPhoneNumber];
+//        UIWebView *phoneWebView = [[UIWebView alloc] init];
+//        [phoneWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", numberAfterClear]]]];
+//        self.callWebView = phoneWebView;
+//    } else {
+//        [QuickMethod alert:kCallNotSupportOnThisDevice];
+//    }
+//}
 @end
